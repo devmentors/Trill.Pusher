@@ -5,8 +5,7 @@ using Trill.Pusher.Channels;
 namespace Trill.Pusher.Events.External.Handlers
 {
     internal sealed class ActionRejectedHandler :
-        IEventHandler<AdActionRejected>,
-        IEventHandler<StoryActionRejected>
+        IEventHandler<AdActionRejected>
     {
         private readonly ActionRejectedChannels _channels;
 
@@ -16,15 +15,6 @@ namespace Trill.Pusher.Events.External.Handlers
         }
 
         public async Task HandleAsync(AdActionRejected @event)
-        {
-            await _channels.Writer.WriteAsync(new ActionRejected
-            {
-                Reason = @event.Reason,
-                Code = @event.Code
-            });
-        }
-
-        public async Task HandleAsync(StoryActionRejected @event)
         {
             await _channels.Writer.WriteAsync(new ActionRejected
             {

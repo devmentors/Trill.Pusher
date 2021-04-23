@@ -68,9 +68,7 @@ namespace Trill.Pusher
             app.UseJaeger();
             app.UsePrometheus();
             app.UseRabbitMq()
-                .SubscribeEvent<StorySent>()
-                .SubscribeEvent<AdActionRejected>()
-                .SubscribeEvent<StoryActionRejected>();
+                .SubscribeEvent<AdActionRejected>();
 
             app.UseRouting();
             app.UseGrpcWeb();
